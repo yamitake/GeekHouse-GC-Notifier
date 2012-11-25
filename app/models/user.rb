@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   rolify
+  has_many :members
+  accepts_nested_attributes_for :members, :reject_if => :all_blank, :allow_destroy => true
+  has_many :tweets
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
