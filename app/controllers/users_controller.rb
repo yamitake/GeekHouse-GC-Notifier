@@ -1,3 +1,4 @@
+#coding: UTF-8
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
@@ -11,9 +12,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user], :as => :admin)
+    if @user.update_attributes(params[:user])
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."

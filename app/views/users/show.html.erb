@@ -1,4 +1,13 @@
 <h3>User</h3>
-<p>User: <%= @user.name %></p>
+<p>定期ツイートしてくれるtwitterアカウント: <%= @user.name %></p>
 <%= image_tag(@user.image) %>
-<%= render 'form' %>
+<% if @user.members.count.zero? %>
+	<%= link_to "新規メンバー作成", new_user_member_path(@user) %>
+<% else %>
+	<%= link_to "メンバー編集", user_members_path(@user) %>
+<% end %>
+<% if @user.tweets.count.zero? %>
+	<%= link_to "新規ツイート作成", new_user_tweet_path(@user) %>
+<% else %>
+	<%= link_to "ツイート編集", user_tweets_path(@user) %>
+<% end %>

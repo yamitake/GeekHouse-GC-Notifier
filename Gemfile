@@ -26,5 +26,8 @@ gem 'omniauth-twitter'
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
-gem "cocoon"
 gem "quiet_assets", ">= 1.0.1", :group => :development
+gem "i18n_generators", "~> 1.2.1"
+gem "cocoon"
+gem "twitter"
+gem "foreman"

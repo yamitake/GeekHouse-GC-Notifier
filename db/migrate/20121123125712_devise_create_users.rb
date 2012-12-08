@@ -28,6 +28,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :uid, :limit => 8
       t.string :name
       t.string :provider
+      t.string :access_token
+      t.string :access_secret
       t.string :password
       t.string :image
       ## Lockable

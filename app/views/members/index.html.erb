@@ -1,0 +1,24 @@
+<h3>住人のツイッターアカウントを設定してね！</h3>
+
+<div>
+<%= simple_nested_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+  <%= f.error_notification %>
+  <% @user.members.each do |m| %>
+  <%= f.fields_for :members, Member.new do |member_form| %>
+    <div class="form-inputs">
+      <table>
+        <tr>
+          <td><%= member_form.input :name, placeholder: 'kitaindia', input_html: { value: m.name } %></td>
+          <td><%= member_form.input :turn, collection: 1..99, selected: [m.turn] %></td>
+          <td><%= member_form.link_to_remove "削除" %></td>
+        </tr>
+      </table>
+    <% end %>
+  <% end %>
+    <p><%= f.link_to_add "メンバーを追加", :members %></p>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>

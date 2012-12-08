@@ -2,5 +2,9 @@
 
 FactoryGirl.define do
   factory :member do
+    name "MyString"
+    turn 1
+    image "MyString"
+    user_id 1
   end
 end

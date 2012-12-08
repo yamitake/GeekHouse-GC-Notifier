@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124012533) do
+ActiveRecord::Schema.define(:version => 20121125155946) do
 
   create_table "members", :force => true do |t|
     t.string   "name"
-    t.string   "image"
     t.integer  "turn"
+    t.string   "image"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(:version => 20121124012533) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "tweets", :force => true do |t|
-    t.string   "message"
-    t.datetime "cron_time"
+    t.text     "message"
+    t.integer  "cron_week"
+    t.integer  "cron_number_week"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20121124012533) do
     t.integer  "uid",                    :limit => 8
     t.string   "name"
     t.string   "provider"
+    t.string   "access_token"
+    t.string   "access_secret"
     t.string   "password"
     t.string   "image"
     t.datetime "created_at",                                          :null => false

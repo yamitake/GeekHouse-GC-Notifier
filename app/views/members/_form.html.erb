@@ -1,0 +1,14 @@
+<%= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+  <h3>Member</h3>
+    <div id='members'>
+      <%= f.semantic_fields_for :members, Member.new do |member| %>
+        <%= render 'member_fields', :f => member %>
+        <div class='links'>
+          <%= link_to_add_association 'add member', f, :members %>
+        </div>
+      <% end %>
+      <% f.buttons do %>
+        <%= f.submit 'Save' %>
+      <% end %>
+    </div>
+<% end %>

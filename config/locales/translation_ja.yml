@@ -1,0 +1,48 @@
+ja:
+  activerecord:
+    models:
+      member: member  #g
+      role: role  #g
+      tweet: tweet  #g
+      user: user  #g
+
+    attributes:
+      member:
+        image: image  #g
+        name: ツイッターアカウント名  #g
+        turn: 順番  #g
+        user: :activerecord.models.user  #g
+
+      role:
+        name: name  #g
+        resource: :activerecord.models.resource  #g
+        resource_type: resource_type  #g
+        users: users  #g
+
+      tweet:
+        cron_number_week: 第○曜日  #g
+        cron_week: 曜日  #g
+        message: ツイート内容  #g
+        user: :activerecord.models.user  #g
+
+      user:
+        access_secret: access_secret  #g
+        access_token: access_token  #g
+        current_sign_in_at: current_sign_in_at  #g
+        current_sign_in_ip: current_sign_in_ip  #g
+        email: email  #g
+        encrypted_password: encrypted_password  #g
+        house_name: シェアハウス名（任意） #g
+        image: image  #g
+        last_sign_in_at: last_sign_in_at  #g
+        last_sign_in_ip: last_sign_in_ip  #g
+        members: members  #g
+        name: name  #g
+        password: password  #g
+        provider: provider  #g
+        remember_created_at: remember_created_at  #g
+        reset_password_sent_at: reset_password_sent_at  #g
+        reset_password_token: reset_password_token  #g
+        roles: roles  #g
+        tweets: tweets  #g
+        uid: uid  #g

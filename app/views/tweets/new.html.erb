@@ -1,0 +1,28 @@
+<h3>毎週つぶやかせたい事を書いてね</h3>
+<p>毎日22時と、深夜2時につぶやくよ！</p>
+<p>例：月曜日が「普通ゴミの日」だった場合</p>
+<p>「今日は普通ゴミの日だよ！」と「月曜日」にセット。</p>
+<p>結果→前日の日曜日、22時と月曜日の2時に呟いてくれるよ！</p>
+<div>
+<%= simple_nested_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+  <%= f.error_notification %>
+  <% 7.times do |i| %>
+  <%= f.fields_for :tweets, Tweet.new do |tweet_form| %>
+    <div class="form-inputs">
+      <table>
+        <tr>
+          <td><%= tweet_form.input :message, input_html: { :cols => 50, :rows => 3 }, placeholder: "今日は普通ゴミの日だよ！！！" %></td>
+          <td><%= tweet_form.input :cron_number_week, collection: { 第１: 1, 第２: 2, 第３: 3, 第４: 4 }, prompt: 'なし' %></td>
+          <td><%= tweet_form.input :cron_week, collection: {月: 1, 火: 2, 水: 3, 木: 4, 金: 5, 土: 6, 日: 7 },selected: [i + 1] %></td>
+          <td><%= tweet_form.link_to_remove "削除" %></td>
+        </tr>
+      </table>
+    <% end %>
+  <% end %>
+    <p><%= f.link_to_add "ツイートを追加", :tweets %></p>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div

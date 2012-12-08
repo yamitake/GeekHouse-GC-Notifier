@@ -1,0 +1,29 @@
+<h3>住人のツイッターアカウントを設定してね！</h3>
+<% render 'form' %>
+
+
+<%#= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+
+
+<!--
+  <%#= f.error_notification %>
+  <%# 5.times do |i| %>
+  <%#= f.fields_for :members, Member.new do |member_form| %>
+    <div class="form-inputs">
+      <table>
+        <tr>
+          <td><%#= member_form.input :name, placeholder: 'kitaindia' %></td>
+          <td><%#= member_form.input :turn, collection: 1..99, selected: [i + 1] %></td>
+          <td><%#= member_form.link_to_remove_association "削除", member_form %></td>
+        </tr>
+      </table>
+      <p><%#= f.link_to_add_association "メンバーを追加", f, :members %></p>
+    <%# end %>
+  <%# end %>
+  </div>
+  <div class="form-actions">
+    <%#= f.button :submit %>
+  </div>
+<%# end %>
+</div>
+-->
