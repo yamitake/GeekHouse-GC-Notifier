@@ -4,7 +4,6 @@ gem 'sqlite3'
 
 group :production do
   gem 'mysql2'
-#  gem 'rainbows'
 end
 
 group :assets do
@@ -36,3 +35,4 @@ gem "i18n_generators", "~> 1.2.1"
 gem "cocoon"
 gem "twitter"
 gem "foreman"
+gem "thin"
