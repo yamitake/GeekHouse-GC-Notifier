@@ -6,18 +6,19 @@ class User < ActiveRecord::Base
   has_many :tweets
   accepts_nested_attributes_for :tweets,  reject_if: proc { |attributes| attributes['message'].blank? }, allow_destroy: true
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
-  devise :trackable, :omniauthable, :database_authenticatable
+  devise :trackable, :omniauthable, :registerable
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :password, :uid, :provider, :image,
                   :house_name, :members_attributes, :tweets_attributes,
                   :access_token, :access_secret
+
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-
       user = User.create(name:auth.info.nickname,
                          provider:auth.provider,
                          access_token:auth.credentials.token,

@@ -1,11 +1,9 @@
 <div class='nested-fields'>
-  <%= f.inputs do %>
       <table>
         <tr>
           <td><%= f.input :name, placeholder: 'kitaindia' %></td>
           <td><%= f.input :turn, collection: 1..99 %></td>
-          <td><%= f.link_to_remove_association "削除", f %></td>
+          <td><%= link_to_remove_association "削除", f %></td>
         </tr>
       </table>
-  <% end %>
 </div>

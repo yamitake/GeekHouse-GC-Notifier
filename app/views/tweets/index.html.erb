@@ -1,26 +1,18 @@
-<h1>Listing tweets</h1>
-
-<table>
-  <tr>
-    <th>Message</th>
-    <th>Cron time</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tweets.each do |tweet| %>
-  <tr>
-    <td><%= tweet.message %></td>
-    <td><%= tweet.user_id %></td>
-    <td><%= link_to 'Show', tweet %></td>
-    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-    <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h3>毎週つぶやかせたい事を書いてね</h3>
+<p>毎日22時と、深夜2時につぶやくよ！</p>
+<p>例：月曜日が「普通ゴミの日」だった場合</p>
+<p>「今日は普通ゴミの日だよ！」と「月曜日」にセット。</p>
+<p>結果→前日の日曜日、22時と月曜日の2時に呟いてくれるよ！</p>
+<%= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+  <h3>Tweets</h3>
+    <div id='tweets'>
+      <%= f.simple_fields_for :tweets do |tweet| %>
+        <%= render 'tweet_fields', f: tweet %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add tweet', f, :tweets %>
+      </div>
+    </div>
+    <%= f.submit 'Save' %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tweet', new_tweet_path %>
+<%= link_to 'Back', user_path(@user) %>

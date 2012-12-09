@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
+  before_filter :authenticate_user!
+
   def index
-    @tweets = Tweet.all
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,12 +1,14 @@
-<%= simple_form_for(@tweet) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :message %>
-    <%= f.input :user_id %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<%= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
+  <h3>Tweets</h3>
+    <div id='tweets'>
+      <% 7.times do %>
+        <%= f.simple_fields_for :tweets, Tweet.new do |tweet| %>
+          <%= render 'tweet_fields', f: tweet %>
+        <% end %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add tweet', f, :tweets %>
+      </div>
+    </div>
+    <%= f.submit 'Save' %>
 <% end %>

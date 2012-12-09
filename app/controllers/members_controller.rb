@@ -1,6 +1,8 @@
 class MembersController < ApplicationController
   # GET /members
   # GET /members.json
+  before_filter :authenticate_user!
+
   def index
     @user = User.find(params[:user_id])
 
@@ -33,7 +35,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-    @member = Member.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # POST /members
