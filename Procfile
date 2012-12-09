@@ -1,1 +1,1 @@
-web:          bundle exec rails s -p5000
+app: bundle exec thin start

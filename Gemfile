@@ -31,3 +31,4 @@ gem "i18n_generators", "~> 1.2.1"
 gem "cocoon"
 gem "twitter"
 gem "foreman"
+gem 'thin'
