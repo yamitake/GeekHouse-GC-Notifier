@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'sqlite3'
+
+group :production do
+  gem 'mysql2'
+#  gem 'rainbows'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -13,7 +19,6 @@ group :test, :development do
   gem 'pry-remote'
 end
 gem 'jquery-rails'
-gem "unicorn", ">= 4.3.1", :group => :production
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
 gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
@@ -31,4 +36,3 @@ gem "i18n_generators", "~> 1.2.1"
 gem "cocoon"
 gem "twitter"
 gem "foreman"
-gem 'thin'
