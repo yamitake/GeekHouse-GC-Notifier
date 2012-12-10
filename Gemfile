@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.9'
-gem 'sqlite3'
-
 group :production do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 group :assets do
@@ -16,9 +14,7 @@ group :test, :development do
   gem "factory_girl_rails"
   gem 'pry-rails'
   gem 'pry-remote'
-  gem 'rack-env'
-  gem 'thin'
-  gem 'foreman'
+  gem 'sqlite3'
 end
 gem 'jquery-rails'
 gem "database_cleaner", ">= 0.9.1", :group => :test
