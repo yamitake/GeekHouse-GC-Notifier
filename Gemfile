@@ -15,7 +15,6 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'sqlite3'
-  gem 'foreman'
 end
 gem 'jquery-rails'
 gem "database_cleaner", ">= 0.9.1", :group => :test
@@ -33,4 +32,6 @@ gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "i18n_generators", "~> 1.2.1"
 gem "cocoon"
+gem "thin"
+gem 'foreman'
 gem "twitter"
