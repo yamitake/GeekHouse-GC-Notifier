@@ -2,10 +2,10 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   before_filter :authenticate_user!
-
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
-
+    authorize! :read, @user
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }

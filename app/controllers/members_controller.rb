@@ -2,10 +2,10 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   before_filter :authenticate_user!
-
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
-
+    authorize! :read, @user
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @members }
@@ -16,7 +16,6 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     @member = Member.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @member }
@@ -57,7 +56,6 @@ class MembersController < ApplicationController
   # PUT /members/1.json
   def update
     @member = Member.find(params[:id])
-
     respond_to do |format|
       if @member.update_attributes(params[:member])
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
@@ -74,7 +72,6 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-
     respond_to do |format|
       format.html { redirect_to members_url }
       format.json { head :no_content }
