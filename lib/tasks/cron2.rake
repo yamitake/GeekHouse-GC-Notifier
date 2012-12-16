@@ -43,8 +43,8 @@ task :cron2 => :environment do
     users.each do |user|
       count = user.members.count
       next unless count > 1
-      before_member = user.members.find(1).name
-      next_member = user.members.find(2).name
+      before_member = user.members.where(turn: 1).first.name
+      next_member = user.members.where(turn: 2).first.name
       message = "@#{before_member} さんお疲れ様！　次の当番は #{next_member}さんです。"
       user.members.each do |member|
         member.turn == 1 ? member.update_attributes(turn: count) : member.decrement(:turn, 1)
