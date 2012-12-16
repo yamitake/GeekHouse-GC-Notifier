@@ -42,7 +42,7 @@ task :cron2 => :environment do
     users = User.all
     users.each do |user|
       count = user.members.count
-      next if count > 1
+      next unless count > 1
       before_member = user.members.find(1).name
       next_member = user.members.find(2).name
       message = "@#{before_member} さんお疲れ様！　次の当番は #{next_member}さんです。"
