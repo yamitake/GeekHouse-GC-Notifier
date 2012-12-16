@@ -2,8 +2,8 @@
      <table>
         <tr>
           <td><%= f.input :message, input_html: { :cols => 50, :rows => 3 }, placeholder: "今日は普通ゴミの日だよ！！！" %></td>
-          <td><%= f.input :cron_number_week, collection: { 第１: 1, 第２: 2, 第３: 3, 第４: 4 }, prompt: 'なし' %></td>
-          <td><%= f.input :cron_week, collection: {月: 1, 火: 2, 水: 3, 木: 4, 金: 5, 土: 6, 日: 0 } %></td>
+          <td><%= f.input :cron_number_week, collection: {なし: 0, 第１: 1, 第２: 2, 第３: 3, 第４: 4}, default: 0 %></td>
+          <td><%= f.input :cron_week, collection: {月: 1, 火: 2, 水: 3, 木: 4, 金: 5, 土: 6, 日: 0 }, default: 0 %></td>
           <td><%= link_to_remove_association "削除", f %></td>
         </tr>
       </table>

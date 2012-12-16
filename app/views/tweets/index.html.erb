@@ -4,7 +4,7 @@
 <p>「今日は普通ゴミの日だよ！」と「月曜日」にセット。</p>
 <p>結果→前日の日曜日、22時と月曜日の2時に呟いてくれるよ！</p>
 <%= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
-  <h3>Tweets</h3>
+  <h3>つぶやき設定</h3>
     <div id='tweets'>
       <%= f.simple_fields_for :tweets do |tweet| %>
         <%= render 'tweet_fields', f: tweet %>
@@ -14,5 +14,6 @@
       </div>
     </div>
     <%= f.submit 'Save' %>
+    <%= hidden_field_tag :redirect_path, request.path_info %>
 <% end %>
 <%= link_to 'Back', user_path(@user) %>

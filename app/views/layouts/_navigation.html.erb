@@ -2,11 +2,11 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Logout', destroy_user_session_path %>
+    <%= link_to 'ログアウト', destroy_user_session_path %>
     </li>
   <% else %>
     <li>
-    <%= link_to 'Login', user_omniauth_authorize_path(:twitter) %>  
+    <%= link_to 'ログイン', user_omniauth_authorize_path(:twitter) %>  
     </li>
   <% end %>
   <% if user_signed_in? %>
@@ -20,7 +20,7 @@
     <% end %>
   <% else %>
     <li>
-    <%= link_to 'Sign up', user_omniauth_authorize_path(:twitter) %>
+    <%= link_to 'さっそく登録！', user_omniauth_authorize_path(:twitter) %>
     </li>
   <% end %>
 </ul>

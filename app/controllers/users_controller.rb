@@ -13,10 +13,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update_attributes(params[:user])
-      redirect_to users_path, :notice => "User updated."
+      redirect_to users_path, :notice => "設定を適用させました。"
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to params[:redirect_path], :alert => "入力項目にエラーがあり、保存できませんでした。"
     end
   end
 

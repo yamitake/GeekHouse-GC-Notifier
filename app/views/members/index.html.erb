@@ -1,6 +1,7 @@
 <h3>住人のツイッターアカウントを設定してね！</h3>
+
 <%= simple_form_for @user, url: user_path(@user), method: "PUT" do |f| %>
-  <h3>Member</h3>
+  <h3>住人設定</h3>
     <div id='members'>
       <%= f.simple_fields_for :members do |member| %>
         <%= render 'member_fields', :f => member %>
@@ -10,6 +11,7 @@
       </div>
     </div>
     <%= f.submit 'Save' %>
+    <%= hidden_field_tag :redirect_path, request.path_info %>
 <% end %>
 <div>
 <%= link_to 'Back', user_path(@user) %>

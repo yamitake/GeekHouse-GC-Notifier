@@ -61,7 +61,7 @@ class MembersController < ApplicationController
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "index" }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
