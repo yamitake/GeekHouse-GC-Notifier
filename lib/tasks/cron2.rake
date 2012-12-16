@@ -51,7 +51,7 @@ task :cron2 => :environment do
       twitter = Twitter::Client.new(oauth_token: user.access_token, oauth_token_secret: user.access_secret)
       twitter.update(truncate(message,length: 140))
       user.members.each do |member|
-        member.turn == 1 ? member.update_attributes(turn: count) : member.decrement!(:turn, 1) 
+        member.turn == 1 ? member.update_attributes(turn: count) : member.decrement!(:turn, 1)
       end
     end
   end
