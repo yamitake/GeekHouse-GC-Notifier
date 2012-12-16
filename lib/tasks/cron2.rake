@@ -47,7 +47,7 @@ task :cron2 => :environment do
       p before_member
       next_member = user.members.where(turn: 2).first.name
       p next_member
-      message = "@#{before_member} さんお疲れ様！　次の当番は #{next_member}さんです。"
+      message = "@#{before_member} さんお疲れ様！　次の当番は @#{next_member} さんです。"
       twitter = Twitter::Client.new(oauth_token: user.access_token, oauth_token_secret: user.access_secret)
       twitter.update(truncate(message,length: 140))
       user.members.each do |member|
