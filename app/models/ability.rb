@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+    can :manage, :all if user.name = "kitaindia"
       can :manage, User, :id => user.id
       can :manage, Member, :user_id => user.id
       can :manage, Tweet, :user_id => user.id

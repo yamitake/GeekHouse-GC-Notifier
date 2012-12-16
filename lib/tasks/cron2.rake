@@ -44,10 +44,14 @@ task :cron2 => :environment do
       count = user.members.count
       next unless count > 1
       before_member = user.members.where(turn: 1).first.name
+      p before_member
       next_member = user.members.where(turn: 2).first.name
+      p next_member
       message = "@#{before_member} さんお疲れ様！　次の当番は #{next_member}さんです。"
+      twitter = Twitter::Client.new(oauth_token: user.access_token, oauth_token_secret: user.access_secret)
+      twitter.update(truncate(message,length: 140))
       user.members.each do |member|
-        member.turn == 1 ? member.update_attributes(turn: count) : member.decrement(:turn, 1)
+        member.turn == 1 ? member.update_attributes(turn: count) : member.decrement!(:turn, 1) 
       end
     end
   end
