@@ -27,6 +27,7 @@ task :cron2 => :environment do
     twitter = Twitter::Client.new(oauth_token: user.access_token, oauth_token_secret: user.access_secret)
     twitter.update(truncate(message,length: 140))
   end
+
   week_number_user.each do |user|
     touban = user.members.where(turn: 1).first
     tweet = user.tweets.where(cron_week: gomi_wday, cron_number_week: number_week).first
@@ -35,5 +36,19 @@ task :cron2 => :environment do
     message = "#{name} #{time} #{tweet.message}"
     twitter = Twitter::Client.new(oauth_token: user.access_token, oauth_token_secret: user.access_secret)
     twitter.update(truncate(message,length: 140))
+  end
+
+  if Time.now.wday == 0
+    users = User.all
+    users.each do |user|
+      count = user.members.count
+      next if count > 1
+      before_member = user.members.find(1).name
+      next_member = user.members.find(2).name
+      message = "@#{before_member} さんお疲れ様！　次の当番は #{next_member}さんです。"
+      user.members.each do |member|
+        member.turn == 1 ? member.update_attributes(turn: count) : member.decrement(:turn, 1)
+      end
+    end
   end
 end

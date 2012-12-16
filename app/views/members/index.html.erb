@@ -7,11 +7,11 @@
         <%= render 'member_fields', :f => member %>
       <% end %>
       <div class='links'>
-        <%= link_to_add_association 'add member', f, :members %>
+        <%= link_to_add_association '追加', f, :members %>
       </div>
     </div>
-    <%= f.submit 'Save' %>
+    <%= f.submit '保存' %>
     <%= hidden_field_tag :redirect_path, request.path_info %>
 <% end %>
 <div>
-<%= link_to 'Back', user_path(@user) %>
+<%= link_to '戻る', user_path(@user) %>
