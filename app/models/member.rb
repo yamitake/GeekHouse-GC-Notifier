@@ -3,5 +3,9 @@ class Member < ActiveRecord::Base
   belongs_to :user
   #validates_associated :user
   validates :name, length: { maximum: 15 }
-  validates :turn, presence: true
+  validates :turn, presence: true, uniqueness: { scope: :user_id }
+
+  #before_save do
+  #  raise
+  #end
 end
