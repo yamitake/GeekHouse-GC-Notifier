@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #----------------------------------------------------------------------------
 # Ignore these files when commiting to a git repository.
 #
@@ -69,6 +70,3 @@ pickle-email-*.html
 
 # Textmate project files
 /*.tmproj
-
-# vim artifacts
-**.swp
